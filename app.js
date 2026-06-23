@@ -5,8 +5,8 @@ const addUser=(req, res, next) => {
     req.user="Guest";
     next();
 };
-
-app.get('/welcome', addUser, (req,res)=>{
+app.use(addUser);
+app.get('/welcome', (req,res)=>{
     res.send(`<h1>Welcome ,${req.user}!</h1>`);
 });
 
